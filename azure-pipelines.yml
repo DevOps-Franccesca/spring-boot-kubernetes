@@ -4,21 +4,6 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: Build 
-  jobs:
-  - job: build
-    displayName: 'Build'
-    steps:
-      - task: Maven@4
-        inputs:
-          mavenPomFile: 'pom.xml'
-          publishJUnitResults: true
-          testResultsFiles: '**/surefire-reports/TEST-*.xml'
-          javaHomeOption: 'JDKVersion'
-          mavenVersionOption: 'Default'
-          mavenAuthenticateFeed: false
-          effectivePomSkip: false
-          sonarQubeRunAnalysis: false
 
 - stage: SAST
   jobs:
@@ -36,18 +21,17 @@ stages:
             sonar.sources=src/main/java/
             sonar.language=java
             sonar.sourceEncoding=UTF-8
-
-      - task: Maven@4
+      - task: Maven@3
         inputs:
           mavenPomFile: 'pom.xml'
+          goals: 'clean verify sonar:sonar'
           publishJUnitResults: true
           testResultsFiles: '**/surefire-reports/TEST-*.xml'
+          codeCoverageToolOption: JaCoCo
           javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.11'
           mavenVersionOption: 'Default'
-          mavenAuthenticateFeed: false
-          effectivePomSkip: false
-          sonarQubeRunAnalysis: true
-          sqMavenPluginVersionChoice: 'latest'
+
 
 
 
