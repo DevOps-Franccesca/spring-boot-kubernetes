@@ -4,20 +4,6 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage: Build
-    jobs:
-    - job: build
-      displayName: 'Build'
-      steps:
-      - task: Gradle@3
-        inputs:
-          gradleWrapperFile: 'gradlew'
-          tasks: 'build'
-          publishJUnitResults: true
-          testResultsFiles: '**/TEST-*.xml'
-          javaHomeOption: 'JDKVersion'
-          sonarQubeRunAnalysis: false
-          spotBugsAnalysis: false
     
   - stage: SAST
     jobs:
