@@ -31,6 +31,8 @@ stages:
           javaHomeOption: 'JDKVersion'
           jdkVersionOption: '1.11'
           mavenVersionOption: 'Default'
+      - task: SonarCloudAnalyze@1
+      - task: SonarCloudPublish@1
 
 
 
