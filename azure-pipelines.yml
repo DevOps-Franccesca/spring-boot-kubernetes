@@ -5,6 +5,22 @@ pool:
 
 stages:
 
+- stage: Build 
+  jobs:
+  - job: build
+    displayName: 'Build'
+    steps:
+    - task: Maven@4
+      inputs:
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
+
 - stage: SAST
   jobs:
   - job: sast
@@ -27,7 +43,6 @@ stages:
           publishJUnitResults: true
           testResultsFiles: '**/surefire-reports/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
-          jdkVersionOption: 1.11
           mavenVersionOption: 'Default'
           mavenAuthenticateFeed: false
           effectivePomSkip: false
