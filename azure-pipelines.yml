@@ -18,3 +18,9 @@ stages:
           javaHomeOption: 'JDKVersion'
           sonarQubeRunAnalysis: false
           spotBugsAnalysis: false
+      - task: SonarCloudPrepare@1
+        inputs:
+          SonarCloud: 'Sonarcloud'
+          organization: 'devops-franccesca'
+          projectKey: 'DevOps-Franccesca_spring-boot-kubernetes'
+          projectName: 'spring-boot-kubernetes'
