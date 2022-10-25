@@ -18,7 +18,12 @@ stages:
           javaHomeOption: 'JDKVersion'
           sonarQubeRunAnalysis: false
           spotBugsAnalysis: false
-      
+    
+  - stage: SAST
+    jobs:
+    - job: sast
+      displayName: 'SAST'
+      steps:
       - task: SonarCloudPrepare@1
         inputs:
           SonarCloud: 'Sonarcloud'
