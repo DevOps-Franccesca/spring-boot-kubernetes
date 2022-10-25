@@ -29,9 +29,9 @@ stages:
       inputs:
         SonarCloud: 'Sonarcloud'
         organization: 'devops-franccesca'
-        scannerMode: 'MSBuild'
         projectKey: 'DevOps-Franccesca_spring-boot-kubernetes'
         projectName: 'spring-boot-kubernetes'
+
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
@@ -42,5 +42,5 @@ stages:
         mavenAuthenticateFeed: false
         effectivePomSkip: false
         sonarQubeRunAnalysis: true
-        sqMavenPluginVersionChoice: 'pom'
+        sqMavenPluginVersionChoice: 'latest'
 
