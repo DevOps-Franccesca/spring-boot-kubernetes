@@ -4,6 +4,21 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
+- stage: Build 
+  jobs:
+  - job: build
+    displayName: 'Build'
+    steps:
+    - task: Maven@4
+      inputs:
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
 
 - stage: SAST
   jobs:
@@ -14,13 +29,9 @@ stages:
         inputs:
           SonarCloud: 'Sonarcloud'
           organization: 'devops-franccesca'
-          scannerMode: 'Other'
-          extraProperties: |
-            sonar.projectVersion=1.0.0.0
-            sonar.projectName=spring-boot-kubernetes
-            sonar.sources=src/main/java/
-            sonar.language=java
-            sonar.sourceEncoding=UTF-8
+          projectKey: 'DevOps-Franccesca_spring-boot-kubernetes'
+          projectName: 'spring-boot-kubernetes'
+
       - task: Maven@4
         inputs:
           mavenPomFile: 'pom.xml'
