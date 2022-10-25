@@ -21,18 +21,18 @@ stages:
             sonar.sources=src/main/java/
             sonar.language=java
             sonar.sourceEncoding=UTF-8
-      - task: Maven@3
+      - task: Maven@4
         inputs:
           mavenPomFile: 'pom.xml'
-          goals: 'clean verify sonar:sonar'
           publishJUnitResults: true
           testResultsFiles: '**/surefire-reports/TEST-*.xml'
-          codeCoverageToolOption: JaCoCo
           javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '1.11'
+          jdkVersionOption: 1.11
           mavenVersionOption: 'Default'
-      - task: SonarCloudAnalyze@1
-      - task: SonarCloudPublish@1
+          mavenAuthenticateFeed: false
+          effectivePomSkip: false
+          sonarQubeRunAnalysis: true
+          sqMavenPluginVersionChoice: 'latest'
 
 
 
