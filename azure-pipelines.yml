@@ -58,7 +58,7 @@ stages:
     steps:
       - task: dependency-check-build-task@6
         inputs:
-          projectName: 'pet-clinic'
+          projectName: 'spring-boot-kubernetes'
           scanPath: '$(Build.SourcesDirectory)/build/libs'
           format: 'HTML'
 
