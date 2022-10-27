@@ -93,10 +93,7 @@ stages:
 
       - task: Docker@2
         inputs:
-          containerRegistry: 'Docker'
+          containerRegistry: 'docker'
           repository: 'keila713/spring-boot-kubernetes'
           command: 'push'
           tags: 'latest'
-
-
-
