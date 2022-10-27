@@ -27,7 +27,6 @@ public class ControllerTest {
     static class UserConfigTestConfig {
         @Bean
         UserConfig userConfig() {
-            fran = 1;
             return new UserConfig("dara", "ok");
         }
 
