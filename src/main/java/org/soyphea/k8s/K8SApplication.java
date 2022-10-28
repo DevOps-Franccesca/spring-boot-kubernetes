@@ -17,8 +17,6 @@ public class K8SApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(K8SApplication.class, args);
-        SpringApplication.run(K8SApplication.class, args);
-        SpringApplication.run(K8SApplication.class, args);
     }
 
     @Override
