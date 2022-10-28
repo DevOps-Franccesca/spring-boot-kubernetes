@@ -14,13 +14,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-/* String mes = "enero";
- */
 
 public class HelloWorld
 {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
-    String fran;
+
 	}
 }
