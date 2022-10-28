@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class clasePrueba  {
+public class pruebaFran  {
     private int n;
   
     public void controller() {
