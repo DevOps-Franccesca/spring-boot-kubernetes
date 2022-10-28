@@ -16,16 +16,9 @@ public class K8SApplication implements CommandLineRunner {
     UserConfig userConfig;
 
     public static void main(String[] args) {
-        int fran = 1;
-        if(fran==1 && fran == 8 && fran == 9){
-            fran = 2;
-        }else if(fran==1){
-            fran = 7;
-        }else if(fran==0){
-            fran=99;
-        }else{
-            fran=888;
-        }
+        SecureRandom sr = new SecureRandom();
+        sr.setSeed(123456L);
+        int v = sr.next(32);
         SpringApplication.run(K8SApplication.class, args);
     }
 
