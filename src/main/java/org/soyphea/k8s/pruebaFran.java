@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class clasePrueba  {
-    private int num;
+    private int n;
   
     public void controller() {
     }
