@@ -56,11 +56,22 @@ stages:
   - job: sca
     displayName: 'SCA'
     steps:
+      - task: Maven@4
+        inputs:
+          mavenPomFile: 'pom.xml'
+          publishJUnitResults: true
+          testResultsFiles: '**/surefire-reports/TEST-*.xml'
+          javaHomeOption: 'JDKVersion'
+          mavenVersionOption: 'Default'
+          mavenAuthenticateFeed: false
+          effectivePomSkip: false
+          sonarQubeRunAnalysis: false
       - task: dependency-check-build-task@6
         inputs:
           projectName: 'spring-boot-kubernetes'
           scanPath: '$(Build.ArtifactStagingDirectory)'
           format: 'HTML'
+          failOnCVSS: '7'
 
 - stage: ContainerSecurity
   jobs:
@@ -93,7 +104,6 @@ stages:
           repository: 'keila713/spring-boot-kubernetes'
           command: 'build'
           Dockerfile: '**/Dockerfile'
-          tags: 'latest'
 
       - script: | 
           sudo apt-get install -y rpm
@@ -106,5 +116,4 @@ stages:
         inputs:
           containerRegistry: 'docker'
           repository: 'keila713/spring-boot-kubernetes'
-          command: 'push'
-          tags: 'latest'
+          command: 'buildAndPush'
