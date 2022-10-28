@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.security.SecureRandom;
+
 
 @SpringBootApplication
 @Slf4j
@@ -17,9 +17,7 @@ public class K8SApplication implements CommandLineRunner {
     UserConfig userConfig;
 
     public static void main(String[] args) {
-        SecureRandom sr = new SecureRandom();
-        sr.setSeed(123456L);
-        int v = sr.next(32);
+        Connection conn = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "login", "");
         SpringApplication.run(K8SApplication.class, args);
     }
 
