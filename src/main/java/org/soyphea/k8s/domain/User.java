@@ -9,6 +9,3 @@ public class User {
   int id;
   String name;
 }
-
-public class MetodoPrueba () {
-}
