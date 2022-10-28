@@ -109,7 +109,7 @@ stages:
           sudo apt-get install -y rpm
           wget https://github.com/aquasecurity/trivy/releases/download/v0.27.1/trivy_0.27.1_Linux-64bit.deb
           sudo dpkg -i trivy_0.27.1_Linux-64bit.deb
-          trivy image keila713/spring-boot-kubernetes:latest
+          trivy image --exit-code 1 --severity HIGH,CRITICAL keila713/spring-boot-kubernetes:$(Build.BuildId)
         displayName: Image Scan
 
       - task: Docker@2
