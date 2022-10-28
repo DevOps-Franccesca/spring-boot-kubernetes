@@ -17,7 +17,6 @@ public class K8SApplication implements CommandLineRunner {
     UserConfig userConfig;
 
     public static void main(String[] args) {
-        Connection conn = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "login", "");
         SpringApplication.run(K8SApplication.class, args);
     }
 
