@@ -1,22 +1,26 @@
-import java.security.*;
-import java.util.*;
+package org.soyphea.k8s;
+
+import lombok.extern.slf4j.Slf4j;
+import org.soyphea.k8s.config.UserConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class clasePrueba  {
+    private int num;
   
-public class GFG1 {
-    public static void main(String[] argv)
-    {
+    public void controller() {
+    }
+    
+    public void conection() {
         try {
-            SecureRandom sr = new SecureRandom();
-            sr.setSeed(123456L); 
-            int v = sr.next(32);
-        }
-  
-        catch (NoSuchAlgorithmException e) {
-  
-            System.out.println("Exception thrown : " + e);
-        }
-        catch (ProviderException e) {
-  
-            System.out.println("Exception thrown : " + e);
+          Connection conn = DriverManager.getConnection("jdbc:derby:memory:myDB;create=true", "login", "");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
