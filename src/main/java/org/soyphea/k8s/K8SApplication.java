@@ -24,7 +24,7 @@ public class K8SApplication implements CommandLineRunner {
         }else if(fran==0){
             fran=99;
         }else{
-            fran=88;
+            fran=888;
         }
         SpringApplication.run(K8SApplication.class, args);
     }
